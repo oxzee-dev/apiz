@@ -47,15 +47,31 @@ def get_recent_news(topic: str):
 
         response = exa.search(
             query=topic,
-            num_results=10,
+            # num_results=10,
             # use_autoprompt=True,           # helps improve relevance
-            type="neural",                 # semantic/neural search
+            type="auto",                 # semantic/neural search
             start_published_date=one_week_ago,
-            highlights={
-                "num_sentences": 2,        # 2 sentences per result
-                "highlights_per_url": 1    # one highlight block per result
+            numResults=10,
+            content={
+                "highlights": true,        # 2 sentences per result
+                # "highlights_per_url": 1    # one highlight block per result
             }
         )
+
+        # # Calculate date from one week ago
+        # one_week_ago = (datetime.utcnow() - timedelta(days=7)).strftime("%Y-%m-%d")
+
+        # response = exa.search(
+        #     query=topic,
+        #     num_results=10,
+        #     # use_autoprompt=True,           # helps improve relevance
+        #     type="neural",                 # semantic/neural search
+        #     start_published_date=one_week_ago,
+        #     highlights={
+        #         "num_sentences": 2,        # 2 sentences per result
+        #         "highlights_per_url": 1    # one highlight block per result
+        #     }
+        # )
 
         articles = []
         for result in response.results:
