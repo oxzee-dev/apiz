@@ -48,7 +48,7 @@ def get_recent_news(topic: str):
         response = exa.search(
             query=topic,
             num_results=10,
-            use_autoprompt=True,           # helps improve relevance
+            # use_autoprompt=True,           # helps improve relevance
             type="neural",                 # semantic/neural search
             start_published_date=one_week_ago,
             highlights={
