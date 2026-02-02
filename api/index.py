@@ -52,7 +52,7 @@ def get_recent_news(topic: str):
             type="auto",                 # semantic/neural search
             start_published_date=one_week_ago,
             numResults=10,
-            content={
+            contents={
                 "highlights": true,        # 2 sentences per result
                 # "highlights_per_url": 1    # one highlight block per result
             }
