@@ -73,6 +73,12 @@ def get_recent_news(topic: str):
         #     }
         # )
 
+
+        zee_results = exa.search(
+            "blog post about artificial intelligence",
+              type="auto",
+              contents={"text": True})
+
         articles = []
         for result in response.results:
             articles.append({
@@ -82,12 +88,13 @@ def get_recent_news(topic: str):
                 "highlights": result.highlights or ["No highlights available"]
             })
 
-        return {
-            "topic": topic,
-            "articles": articles,
-            "count": len(articles),
-            "time_range": f"from {one_week_ago} to now"
-        }
+        # return {
+        #     "topic": topic,
+        #     "articles": articles,
+        #     "count": len(articles),
+        #     "time_range": f"from {one_week_ago} to now"
+        # }
+        return zee_results
 
     except Exception as e:
         raise HTTPException(500, f"Exa error: {str(e)}")
