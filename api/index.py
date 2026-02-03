@@ -66,7 +66,9 @@ def get_recent_news(topic: str):
             f"latest news about {topic}",
             num_results=1,
             start_published_date=one_week_ago,
-            highlights=True
+            # highlights=True,
+            summary=True,
+            # summary={"query": f"Summarize this article about {topic}"}
         )
 
         # Return only the fields you need
