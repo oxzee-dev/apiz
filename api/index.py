@@ -64,12 +64,21 @@ def get_recent_news(topic: str):
     
         results = exa.search_and_contents(
             f"latest news about {topic}",
-            num_results=9,
+            num_results=4,
             start_published_date=one_week_ago,
             highlights=True
         )
-        
-        return results
+
+        # Return only the fields you need
+        return [
+            {
+                "url": r.url,
+                "title": r.title,
+                "published_date": r.published_date,
+                "text": r.text
+            }
+            for r in results.results
+        ]
 
 
 
