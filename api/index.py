@@ -58,6 +58,29 @@ def get_recent_news(topic: str):
             }
         )
 
+###
+
+
+    
+        results = exa.search_and_contents(
+            f"latest news about {topic}",
+            num_results=9,
+            start_published_date=one_week_ago,
+            highlights=True
+        )
+        
+        return results
+
+
+
+
+
+###
+
+
+
+        
+
         # # Calculate date from one week ago
         # one_week_ago = (datetime.utcnow() - timedelta(days=7)).strftime("%Y-%m-%d")
 
@@ -74,27 +97,13 @@ def get_recent_news(topic: str):
         # )
 
 
-        zee_results = exa.search(
-            "blog post about artificial intelligence",
-              type="auto",
-              contents={"text": True})
-
-        articles = []
-        for result in response.results:
-            articles.append({
-                "title": result.title or "No title",
-                "url": result.url,
-                "published": result.published_date or "N/A",
-                "highlights": result.highlights or ["No highlights available"]
-            })
-
         # return {
         #     "topic": topic,
         #     "articles": articles,
         #     "count": len(articles),
         #     "time_range": f"from {one_week_ago} to now"
         # }
-        return zee_results
+
 
     except Exception as e:
         raise HTTPException(500, f"Exa error: {str(e)}")
