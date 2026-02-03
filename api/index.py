@@ -64,7 +64,7 @@ def get_recent_news(topic: str):
     
         results = exa.search_and_contents(
             f"latest news about {topic}",
-            num_results=4,
+            num_results=1,
             start_published_date=one_week_ago,
             highlights=True
         )
@@ -75,7 +75,8 @@ def get_recent_news(topic: str):
                 "url": r.url,
                 "title": r.title,
                 "published_date": r.published_date,
-                "text": r.text
+                # "text": r.text,
+                "summary": r.summary
             }
             for r in results.results
         ]
